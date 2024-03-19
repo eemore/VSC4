@@ -1,7 +1,19 @@
 #print("Enter a todo:")
-prompt_text = "Enter a todo:"
-user_text=input(prompt_text)
-print(user_text)
+
 
 todos = []
-cl
+while True:
+    user_choice = input("Enter add, show or exit:")
+    match(user_choice):
+        case 'add':
+            todo = input("Enter a todo:")
+            todos.append(todo)
+        case 'show':
+            #print(todos)
+            for item in todos:
+                print(item)
+        case 'exit':
+            break
+
+print("Bye")
+
