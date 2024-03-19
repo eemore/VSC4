@@ -1,0 +1,16 @@
+# python -m pip install pyautogui
+#pip install openpyxl
+
+import pyautogui
+
+# Examples:
+pyautogui.alert('Just a notification', "Title")  # always returns "OK"
+pyautogui.confirm('Asks OK or Cancel')  # returns "OK" or "Cancel"
+pyautogui.prompt('Asks for a string from user')  # returns string or None
+pyautogui.password('Enter password')  # returns string or None
+
+# Method signatures:
+#   alert(text='', title='', button='OK')
+#   confirm(text='', title='', buttons=['OK', 'Cancel'])
+#   prompt(text='', title='' , default='')
+#   password(text='', title='', default='', mask='*')
