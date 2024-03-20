@@ -2,3 +2,12 @@ Python
 	Program can be [Non]Interactive/->CLI/GUI/WEB
 	stackoverflow
 	
+	Web app
+		flask and django web framework for python web apps
+		plus html+css+javascript
+	Data science ML AI
+		maths
+	Automations
+		batch emails, etc
+	General programming
+		eg network admin
