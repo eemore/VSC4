@@ -14,13 +14,21 @@ def get_user_input(prompt_message, message_for_blank='', strip_lower=False):
         uc=uc.strip().lower()
     return uc
 
-def edit_todo(todos2, index):
+def todo_edit(todos2, index):
     #get the input
     itemedit=False
     todo=get_user_input("enter replacement for '"+ todos2[index-1].strip("\n")+"'",\
                     'Blank Item not stored', False)
     if todo != '':
         todos2[index-1]=todo+'\n'
+        itemedit = True
+    return itemedit
+
+def todo_add(todos2, todo):
+    #get the input
+    itemedit=False
+    if todo != '':
+        todos2.append(todo)
         itemedit = True
     return itemedit
 
@@ -32,26 +40,45 @@ ListIsEdited = False
 while True:
     user_choice = get_user_input("Enter add, show, edit, delete, save or exit:","Blank ToDo not Stored", True)
     #user_choice = user_choice.strip().lower()
+    uccommands = user_choice.split()
+    no_of_commands = len(uccommands)
+    if no_of_commands==0:
+        pass
+    else:
+        user_choice = uccommands[0]
+        #uccommands.pop(0)
+        #todo = " ".join(uccommands)
+
 
     match(user_choice):
         case 'add':
-            todo = get_user_input("Enter a todo:",'Blank Item not stored', False)
-            if todo != '':
-                todos.append(todo+'\n')
+            if no_of_commands==1:
+                todo = get_user_input("Enter a todo:",'Blank Item not stored', False)
+                ListIsEdited = todo_add(todos, todo)
+            else:
+                n=1
+                while n< no_of_commands:
+                    #print(n,no_of_commands,uccommands)
+                    todo_add(todos, uccommands[n])
+                    n += 1
                 ListIsEdited=True
         case 'show' | 'display' | '':
             #print(todos)
             for index, item in enumerate(todos):
                 print(f'{index+1}.{item.strip("\n")}')
         case 'edit' | 'delete':
-            n=int(input(f"Item number to {user_choice}. 0 to return to options: "))
+            ui=input(f"Item number to {user_choice}. 0 to return to options: ")
+            if ui=="":
+                n=0
+            else:
+                n=int(ui)
             if n==0:
                 pass #n=2# break do nothing
             elif n > len(todos):
                 print('Invalid Number Entered')  
             else:  
                 if user_choice == 'edit':  
-                    ListIsEdited=edit_todo(todos, n)          
+                    ListIsEdited=todo_edit(todos, n)          
                 else:
                     todos.pop(n-1)
                     ListIsEdited=True                
@@ -71,7 +98,7 @@ while True:
                 n = int(user_choice)
                 if n > 0 and n <= len(todos):
                     print(f'switching to editing {n}')
-                    ListIsEdited=edit_todo(todos, n)
+                    ListIsEdited=todo_edit(todos, n)
                 else:
                     print('Invalid Number Entered')
             else:
