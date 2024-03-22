@@ -46,22 +46,23 @@ while True:
         pass
     else:
         user_choice = uccommands[0]
-        #uccommands.pop(0)
-        #todo = " ".join(uccommands)
+        uccommands.pop(0)
+        todo = " ".join(uccommands)
 
 
     match(user_choice):
         case 'add':
             if no_of_commands==1:
-                todo = get_user_input("Enter a todo:",'Blank Item not stored', False)
-                ListIsEdited = todo_add(todos, todo)
+                todo = get_user_input("Enter a todo:",'Blank Item not stored', False)                
             else:
-                n=1
-                while n< no_of_commands:
-                    #print(n,no_of_commands,uccommands)
-                    todo_add(todos, uccommands[n])
-                    n += 1
-                ListIsEdited=True
+                pass
+                #n=1
+                #while n< no_of_commands:
+                #    #print(n,no_of_commands,uccommands)
+                #    todo_add(todos, uccommands[n])
+                #    n += 1
+                #ListIsEdited=True
+            ListIsEdited = todo_add(todos, todo)
         case 'show' | 'display' | '':
             #print(todos)
             for index, item in enumerate(todos):
