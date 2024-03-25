@@ -11,3 +11,25 @@ Python
 		batch emails, etc
 	General programming
 		eg network admin
+	Web scraping
+	Others (
+	
+	Global variables, global, nonlocal (nested)
+	
+	Positional arguments
+	keyword arguments (pname=val)...
+	Default arguments
+	Variable-length arguments (*pname)
+	
+	Data Type
+	Numeric: int, float, and complex
+	Bool: True, False
+	Sequence: String, list(), and tuple[]
+	Set:{} unordered,unindexed values
+	Dictionary (dict): {}key:value pair
+	
+	Try...Except
+	syntax Error vs Exception
+	
+	Repls: online ide replit.com
+	
