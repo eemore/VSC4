@@ -22,6 +22,7 @@ def todo_edit(todos2, index):
     if todo != '':
         todos2[index-1]=todo+'\n'
         itemedit = True
+        print("Item Edited!")
     return itemedit
 
 def todo_add(todos2, todo):
@@ -30,6 +31,7 @@ def todo_add(todos2, todo):
     if todo != '':
         todos2.append(todo)
         itemedit = True
+        print("Item Added!")
     return itemedit
 
 with open(filename,'r') as file:
@@ -38,7 +40,7 @@ with open(filename,'r') as file:
 ListIsEdited = False
 
 while True:
-    user_choice = get_user_input("Enter add, show, edit, delete, save or exit:","Blank ToDo not Stored", True)
+    user_choice = get_user_input("Enter add, show, edit, delete, save or exit:","", True)
     #user_choice = user_choice.strip().lower()
     uccommands = user_choice.split()
     no_of_commands = len(uccommands)
@@ -51,7 +53,7 @@ while True:
 
 
     match(user_choice):
-        case 'add':
+        case 'add' | 'new':
             if no_of_commands==1:
                 todo = get_user_input("Enter a todo:",'Blank Item not stored', False)                
             else:
@@ -68,9 +70,23 @@ while True:
             for index, item in enumerate(todos):
                 print(f'{index+1}.{item.strip("\n")}')
         case 'edit' | 'delete':
-            ui=input(f"Item number to {user_choice}. 0 to return to options: ")
+            if no_of_commands==1:
+                ui=input(f"Item number to {user_choice}. 0 to return to options: ")
+            else:
+                if todo.isdigit():
+                    n=int(todo)
+                    if n<0 or n > len(todos):
+                        print('Invalid Number Entered')
+                        continue
+                    else:
+                        ui=todo
+                else:
+                    print("Invalid Number format")                        
+                    continue
             if ui=="":
                 n=0
+            elif not ui.isdigit():
+                print('Invalid Number Entered')
             else:
                 n=int(ui)
             if n==0:
@@ -81,8 +97,10 @@ while True:
                 if user_choice == 'edit':  
                     ListIsEdited=todo_edit(todos, n)          
                 else:
+                    #print("before pop of delete")
                     todos.pop(n-1)
-                    ListIsEdited=True                
+                    ListIsEdited=True   
+                    print('Item Deleted')             
         case 'save':
             with open(filename,'w') as file:
                 file.writelines(todos)
