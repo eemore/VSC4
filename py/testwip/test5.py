@@ -7,6 +7,14 @@ def get_average():
 
     avg2 = sum(values)/len(values)
     return avg2
+def parse(feet_inches):
+    parts = feet_inches.split(' ')
+    feet = float(parts[0])
+    inches = float(parts[1])
+    return feet,inches
 
 avg = get_average()
 print(avg)
+
+a=parse('1 2')
+print(a)
