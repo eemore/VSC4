@@ -24,12 +24,16 @@ Python
 	Data Type
 	Numeric: int, float, and complex
 	Bool: True, False
-	Sequence: String, list(), and tuple[]
-	Set:{} unordered,unindexed values
+	Sequence: String, list[], and tuple()
+	Set:{} unordered,unindexed values, no dups
 	Dictionary (dict): {}key:value pair
 	
 	Try...Except
 	syntax Error vs Exception
 	
 	Repls: online ide replit.com
+	
+	Python. 1-
+	
+	Anatomy of Python
 	

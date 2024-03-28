@@ -1,5 +1,7 @@
 import pyautogui
 from functions import *
+import time
+
 #import functions #then we use functions.xxx
 
 #print("Enter a todo:")
@@ -9,7 +11,7 @@ filename=r'c:\Users\emoree\Downloads\PD\VSC4\UPC\ToDo\files/todo.txt'
 #todos = file.readlines()
 #file.close()
 
-
+print(time.strftime("%Y-%d-%b %H:%M:%S"))
 with open(filename,'r') as file:
     todos = file.readlines()
 
