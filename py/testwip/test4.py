@@ -1,4 +1,4 @@
-import sys, csv, glob, webbrowser, sh
+import sys, csv, glob, webbrowser
 #import pyautogui
 #import os
 
