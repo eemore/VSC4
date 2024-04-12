@@ -1,5 +1,7 @@
+import time
 
 def get_user_input(prompt_message, message_for_blank='', strip_lower=False):
+    print(f"Today is {time.strftime('%b %d, %Y %H:%M:%S')}")
     uc=input(prompt_message+': ')
     if uc=='' and message_for_blank != '':
         print(message_for_blank)
